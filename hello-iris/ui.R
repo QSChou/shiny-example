@@ -3,12 +3,19 @@ fluidPage(
   titlePanel("iris"),
   sidebarLayout(
     sidebarPanel(
-    radioButtons("radio1", label = "Choices", choices = list(1,2,3,4)),
-    selectInput("colnum", "Choose a Column Number:", choices = c(1,2,3,4)),
-    sliderInput("slider1", label = "Slider", min = 0, max = 100 , value = 50)),
+      wellPanel(
+    radioButtons("dataset", "Choose a dataset:", choices = c("iris", "pressure", "cars"))),
+      wellPanel(
+    #selectInput("colnum", "Choose a Column Number:", choices = c(1,2,3,4))
+        uiOutput("colui")
+        ),
+      wellPanel(
+    sliderInput("bining", label = "Bining Numer", min = 0, max = 100 , value = 50))),
+    #wellPanel(
+    #  selectInput("colnum", "Choose a Column Number:", choices = c("cols"))),
     mainPanel(
-      verbatimTextOutput("t1")
+      verbatimTextOutput("cols")
+      ,verbatimTextOutput("coln")
       ,verbatimTextOutput("summary")
-      ,plotOutput("dist")
-      ))
-)
+      ,plotOutput("dist"))
+  ))
