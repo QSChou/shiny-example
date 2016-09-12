@@ -12,7 +12,7 @@ shinyServer(function(input,output) {
     {
       if(is.null(input$dataset)) return()
       col_class <- lapply(datasetInput(), class)
-      selectInput("colnum", "Choose a Column Number:", choices = names(datasetInput()))
+      selectInput("colnum", "Choose a Column Number:", choices = names(datasetInput()[,sapply(datasetInput(),is.numeric)]))
     # selectInput("colnum", "Choose a Column Number:", choices = col_class)
       
     }
