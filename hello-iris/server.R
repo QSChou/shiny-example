@@ -12,9 +12,8 @@ shinyServer(function(input,output) {
     {
       if(is.null(input$dataset)) return()
       col_class <- lapply(datasetInput(), class)
+      # only numeric columns are selected
       selectInput("colnum", "Choose a Column Number:", choices = names(datasetInput()[,sapply(datasetInput(),is.numeric)]))
-    # selectInput("colnum", "Choose a Column Number:", choices = col_class)
-      
     }
   )
   
